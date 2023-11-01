@@ -1,11 +1,7 @@
-import './App.css';
+import Body from './componenets/Body';
 
 function App() {
-  return (
-    <div>
-      this is netflix gpt project
-    </div>
-  );
+  return <Body />;
 }
 
 export default App;
