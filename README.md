@@ -1,4 +1,4 @@
-# Netflix GPT
+### Netflix GPT
 
 - Create React App
 - Configured TailwindCSS 
@@ -65,5 +65,5 @@
 
 
 
-# Project Setup
-- Before starting the project please add .env file and add TMDB and OPENAI KEY into it.
+<!-- ### Project Setup
+- Before starting the project please add .env file and add TMDB and OPENAI KEY into it. -->
