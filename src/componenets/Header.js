@@ -1,6 +1,22 @@
 import React from 'react'
+import { auth } from '../utils/firebase';
+import { signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
+
+  const navigate = useNavigate();
+  const user = useSelector((store) => store.user);
+
+  const handleSignOut = () => {
+    signOut(auth).then(() => {
+      navigate("/");
+    }).catch((error) => {
+      navigate("/error");
+    });
+  }
+
   return (
     <div className='absolute px-8 w-screen py-2 bg-gradient-to-b from-black z-10 flex justify-between'>
       <img 
@@ -8,14 +24,20 @@ const Header = () => {
         alt="Netflixlogo" 
         className='w-44'
       />
-      <div className='flex p-2 items-center gap-1'>
-        <img 
-         src='./assets/signout.png'
-         alt='Logoutimg' 
-         className='w-11 h-11'
-        />
-        <button className='text-white font-bold'>Sign Out</button>
-      </div>
+      {user && <div className='flex p-2 items-center gap-1'>
+          <img 
+          src={user.photoURL}
+          alt='Logoutimg' 
+          className='w-11 h-11'
+          />
+          <button
+          className='text-white font-bold'
+          onClick={handleSignOut}
+          >
+            Sign Out
+          </button>
+        </div>
+      }
     </div>
   )
 }
