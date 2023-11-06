@@ -1,5 +1,5 @@
 ### Netflix GPT
-
+<!-- 
 - Create React App
 - Configured TailwindCSS 
 - Header
@@ -46,7 +46,7 @@
 - Memoization
 - Added .env file
 - Adding .env file to gitignore
-- Made our Site Responsive
+- Made our Site Responsive -->
 
 # Features
 - Login/Sign Up
