@@ -12,7 +12,7 @@ const MainContainer = () => {
     if(!movies) return;
 
     const movieTrailer = movies[0];
-    console.log(movieTrailer);
+    // console.log(movieTrailer);
 
     const {original_title, overview, id} = movieTrailer;
 
