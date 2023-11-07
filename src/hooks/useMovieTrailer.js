@@ -31,7 +31,7 @@ const useMovieTrailer = (movieId) => {
     }
 
     useEffect(() => {
-      getMovieTrailer();
+       getMovieTrailer();
     },[]);
 };
 

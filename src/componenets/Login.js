@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword , signInWithEmailAndPassword, updateProf
 import { auth } from '../utils/firebase';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
-import {USER_AVTAR} from '../utils/constants';
+import {BG_URL, USER_AVTAR} from '../utils/constants';
 
 const Login = () => {
 
@@ -85,7 +85,7 @@ const Login = () => {
     <div className=''>
       <Header />
       <div className='absolute'>
-        <img src='./assets/background.jpg' alt='backgroundimg' />
+        <img src={BG_URL} alt='backgroundimg' />
       </div>
       <form 
         onSubmit={(e) => e.preventDefault()} 
