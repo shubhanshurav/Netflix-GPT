@@ -15,3 +15,8 @@ export const USER_AVTAR =
 
   export const BG_URL = "./assets/background.jpg";
 
+  export const SUPPORTED_LANGUAGES = [
+       {identifier: "en", name: "English"},
+       {identifier: "hindi", name: "Hindi"},
+       {identifier: "spanish", name: "Spanish"},
+  ];

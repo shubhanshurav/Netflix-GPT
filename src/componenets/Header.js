@@ -6,13 +6,16 @@ import { useSelector } from 'react-redux';
 import { onAuthStateChanged } from "firebase/auth";
 import {addUser, removeUser} from '../utils/userSlice';
 import {useDispatch} from 'react-redux';
-import { LOGO } from '../utils/constants';
+import { LOGO, SUPPORTED_LANGUAGES } from '../utils/constants';
 import { toggleGptSearchView } from '../utils/gptSlice';
+import { FaSignOutAlt } from 'react-icons/fa';
+import {changeLanguages} from "../utils/configSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
 
   const handleSignOut = () => {
     signOut(auth).then(() => {})
@@ -46,8 +49,14 @@ const Header = () => {
   },[]);
 
   const handleGptSearchClick = () => {
-    //TOggle GPT Search Button
+    //Toggle GPT Search Button
     dispatch(toggleGptSearchView());
+  }
+
+  const handleLanguageChange = (e) => {
+    //change the languages
+    // console.log(e.target.value);
+    dispatch(changeLanguages(e.target.value));
   }
 
   return (
@@ -57,12 +66,27 @@ const Header = () => {
         alt="Netflixlogo" 
         className='w-44'
       />
-      {user && <div className='flex p-4 items-center gap-3'>
+      {user && 
+        <div className='flex p-4 items-center gap-3'>
+          {/* see languagechange option when showGptSearch is true */}
+          {showGptSearch && (
+            <select 
+              className='p-2 m-2 bg-gray-900 text-white' 
+              onChange={handleLanguageChange} 
+            >
+              {SUPPORTED_LANGUAGES.map((lang) =>(
+                  <option key={lang.identifier} value={lang.identifier} >
+                    {lang.name}
+                  </option>
+              ))}
+            </select>
+          )}
           <button 
             className='py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg'
             onClick={handleGptSearchClick}
           >
-            GPT Search
+            //
+           {showGptSearch ? "Home" : "GPT Search" }
           </button>
           <img 
            src={user.photoURL}
@@ -70,10 +94,10 @@ const Header = () => {
            className='w-11 h-11 rounded-full'
           />
           <button
-           className='text-white font-bold'
+           className='text-white font-bold text-3xl'
            onClick={handleSignOut}
           >
-            Sign Out
+            <FaSignOutAlt />
           </button>
         </div>
       }
