@@ -1,13 +1,18 @@
 import { useEffect } from 'react';
 import { API_OPTIONS } from '../utils/constants';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addNowPlayingMovies } from '../utils/moviesSlice';
 
 const useNowPlayingMovies = () => {
     // Ftech data from TMDB API and update store
-     const dispatch = useDispatch();
+    const dispatch = useDispatch();
+
+    //agar store me already movie hai to ham again api cal nhi krenge -> known as Memoization
+    const nowPlayingMovies = useSelector(
+        (store) => store.movies?.nowPlayingMovies
+    );
     
-     const getNowPlayingMovies = async () =>{
+    const getNowPlayingMovies = async () =>{
          const data = await fetch(
          'https://api.themoviedb.org/3/movie/now_playing?US&page=2', API_OPTIONS
          );
@@ -18,7 +23,9 @@ const useNowPlayingMovies = () => {
      }
     
      useEffect(() => {
-         getNowPlayingMovies();
+        // reduce the api call
+        !nowPlayingMovies && getNowPlayingMovies();
+        // if(!nowPlayingMovies) getNowPlayingMovies();
      },[]);
  
 }

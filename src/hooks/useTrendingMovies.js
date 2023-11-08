@@ -7,10 +7,15 @@ import { addTrendingMovies } from '../utils/moviesSlice';
 const useTrendingMovies = () => {
     // Ftech data from TMDB API and update store
      const dispatch = useDispatch();
+
+    //agar store me already movie hai to ham again api cal nhi krenge -> known as Memoization
+    const trendingMovies = useSelector(
+      (store) => store.movies?.trendingMovies
+   );
     
      const getTrendingMovies = async () =>{
         const data = await fetch(
-            'https://api.themoviedb.org/3/movie/popular?page=1', API_OPTIONS
+            'https://api.themoviedb.org/3/trending/movie/day?language=en-US', API_OPTIONS
             );
     
          const json = await data.json();
@@ -19,7 +24,8 @@ const useTrendingMovies = () => {
      }
     
      useEffect(() => {
-        getTrendingMovies();
+        // reduce the api call
+        !trendingMovies && getTrendingMovies();
      },[]);
  
 }

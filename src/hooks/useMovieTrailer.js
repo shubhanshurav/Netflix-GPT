@@ -6,7 +6,11 @@ import { useEffect } from 'react';
 const useMovieTrailer = (movieId) => {
 
     const dispatch = useDispatch();
-    // const trailerVideo = useSelector((store) => store.movies?.trailerVideo);
+
+    //agar store me already movie hai to ham again api cal nhi krenge -> known as Memoization
+    const trailerVideo = useSelector(
+        (store) => store.movies?.trailerVideo
+    );
 
     //fetch trailer video & updating the store with trailer video data
     const getMovieTrailer= async () => {
@@ -31,7 +35,8 @@ const useMovieTrailer = (movieId) => {
     }
 
     useEffect(() => {
-       getMovieTrailer();
+       // reduce the api call
+       !trailerVideo && getMovieTrailer();
     },[]);
 };
 

@@ -7,6 +7,11 @@ import { addTopRatedMovies } from '../utils/moviesSlice';
 const useTopRatedMovies = () => {
     // Ftech data from TMDB API and update store
      const dispatch = useDispatch();
+
+    //agar store me already movie hai to ham again api cal nhi krenge -> known as Memoization
+    const topRatedMovies = useSelector(
+        (store) => store.movies?.topRatedMovies
+    );
     
      const getTopRatedMovies = async () =>{
          const data = await fetch(
@@ -19,7 +24,8 @@ const useTopRatedMovies = () => {
      }
     
      useEffect(() => {
-        getTopRatedMovies();
+        // reduce the api call
+        !topRatedMovies && getTopRatedMovies();
      },[]);
  
 }

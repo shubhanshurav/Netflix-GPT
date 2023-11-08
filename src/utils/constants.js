@@ -7,7 +7,7 @@ export const USER_AVTAR =
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2YzgzYTc2N2M3ZDViODlkMmEyMWI3NTk3YmM5MGM4NyIsInN1YiI6IjY1NDg2OGMwMWFjMjkyN2IyZGNlMjE5MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UtoVS_3zoWi9V59-2cLrcLclu8kOGPGBodSqZRQy_YM'
+      Authorization: 'Bearer' + process.env.REACT_APP_TMDB_KEY,
     }
   }; 
 
@@ -20,3 +20,5 @@ export const USER_AVTAR =
        {identifier: "hindi", name: "Hindi"},
        {identifier: "spanish", name: "Spanish"},
   ];
+
+export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;

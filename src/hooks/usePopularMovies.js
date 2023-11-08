@@ -7,6 +7,11 @@ import { addPopularMovies } from '../utils/moviesSlice';
 const usePopularMovies = () => {
     // Ftech data from TMDB API and update store
      const dispatch = useDispatch();
+
+    //agar store me already movie hai to ham again api cal nhi krenge -> known as Memoization
+    const popularMovies = useSelector(
+        (store) => store.movies?.popularMovies
+    );
     
      const getPopularMovies = async () =>{
          const data = await fetch(
@@ -19,7 +24,8 @@ const usePopularMovies = () => {
      }
     
      useEffect(() => {
-        getPopularMovies();
+        // reduce the api call
+        !popularMovies && getPopularMovies();
      },[]);
  
 }

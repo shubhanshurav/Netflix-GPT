@@ -85,7 +85,7 @@ const Header = () => {
             className='py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg'
             onClick={handleGptSearchClick}
           >
-            //
+            {/* if showGptSearch is true than than show homepage otherwise show GptSearch  */}
            {showGptSearch ? "Home" : "GPT Search" }
           </button>
           <img 
