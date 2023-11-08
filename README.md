@@ -6,7 +6,6 @@
 
 ![image](https://github.com/shubhanshurav/Netflix-GPT/assets/87806305/e2bc6c1d-94e0-42d3-9029-267e3bcba46c)
 
-
 <!-- 
 - Create React App
 - Configured TailwindCSS 
