@@ -5,19 +5,19 @@ import VideoTitle from './VideoTitle';
 
 const MainContainer = () => {
 
-    const movies = useSelector((store) => store.movies?.trendingMovies);
+    const movies = useSelector((store) => store.movies?.nowPlayingMovies);
 
     //this is called Early return
     // if(movies == null) return;
     if(!movies) return;
 
-    const movieTrailer = movies[0];
+    const movieTrailer = movies[2];
     // console.log(movieTrailer);
 
     const {original_title, overview, id} = movieTrailer;
 
   return (
-    <div>
+    <div className="pt-[30%] md:pt-0 bg-black">
         <VideoTitle title={original_title} overview={overview}  />
         <VideoBackground movieId={id} />
     </div>
