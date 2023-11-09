@@ -4,12 +4,12 @@ import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { onAuthStateChanged } from "firebase/auth";
-import {addUser, removeUser} from '../utils/userSlice';
+import {addUser, removeUser} from '../redux/slices/userSlice';
 import {useDispatch} from 'react-redux';
 import { LOGO, SUPPORTED_LANGUAGES } from '../utils/constants';
-import { toggleGptSearchView } from '../utils/gptSlice';
+import { toggleGptSearchView } from '../redux/slices/gptSlice';
 import { FaSignOutAlt } from 'react-icons/fa';
-import {changeLanguages} from "../utils/configSlice";
+import {changeLanguages} from "../redux/slices/configSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -60,12 +60,14 @@ const Header = () => {
   }
 
   return (
-    <div className='absolute px-8 w-screen py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between'>
-      <img 
-        src={LOGO}
-        alt="Netflixlogo" 
-        className='w-44 mx-auto md:mx-0'
-      />
+    <div className='absolute px-8 w-screen py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row items-center justify-between'>
+      <div className='text-start'>
+        <img 
+          src={LOGO}
+          alt="Netflixlogo" 
+          className='w-32 h-full md:w-44 mx-auto md:mx-0'
+        />
+      </div>
       {user && 
         <div className='flex p-4 items-center gap-3'>
           {/* see languagechange option when showGptSearch is true */}
@@ -82,7 +84,7 @@ const Header = () => {
             </select>
           )}
           <button 
-            className='py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg'
+            className='py-2 px-2 text-sm md:px-4 mx-4 my-2 bg-purple-800 text-white rounded-md md:rounded-lg'
             onClick={handleGptSearchClick}
           >
             {/* if showGptSearch is true than than show homepage otherwise show GptSearch  */}
@@ -106,3 +108,4 @@ const Header = () => {
 }
 
 export default Header;
+

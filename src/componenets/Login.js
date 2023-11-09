@@ -4,7 +4,7 @@ import { checkValidData } from '../utils/validate';
 import { createUserWithEmailAndPassword , signInWithEmailAndPassword, updateProfile} from "firebase/auth";
 import { auth } from '../utils/firebase';
 import { useDispatch } from 'react-redux';
-import { addUser } from '../utils/userSlice';
+import { addUser } from '../redux/slices/userSlice';
 import {BG_URL, USER_AVTAR} from '../utils/constants';
 
 const Login = () => {
@@ -89,9 +89,9 @@ const Login = () => {
       </div>
       <form 
         onSubmit={(e) => e.preventDefault()} 
-        className='absolute text-white px-12 py-8 bg-black my-20 mx-auto right-0 left-0 w-full md:w-3/12 text-center rounded-lg bg-opacity-80'
+        className='absolute text-white px-12 py-4 md:py-8 bg-black my-20 mx-auto right-0 left-0 w-[85%] md:w-1/3 text-center rounded-lg bg-opacity-80'
       >
-        <h1 className='font-bold text-3xl py-4 text-start'>
+        <h1 className='font-bold text-[26px] md:text-3xl py-3 md:py-4 text-start'>
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
 
@@ -99,7 +99,7 @@ const Login = () => {
           <input 
             type='text'
             placeholder='Full Name'
-            className='p-4 px-4 my-2 w-full bg-gray-700'
+            className='p-3 md:p-4 px-4 my-2 w-full bg-gray-700'
           />
         )}
 
@@ -107,21 +107,21 @@ const Login = () => {
           ref = {email}
           type='email'
           placeholder='Email Address'
-          className='p-4 px-4 my-2 w-full bg-gray-700'
+          className='p-3 md:p-4 px-4 my-2 w-full bg-gray-700'
         />
 
         <input 
           ref = {password}
           type='password'
           placeholder='Enter Password'
-          className='p-4 px-4 my-2 w-full bg-gray-700'
+          className='p-3 md:p-4 px-4 my-2 w-full bg-gray-700'
         />
         <p className='text-red-500 font-bold text-lg py-2'>{errorMessage}</p>
         <button 
-         className='p-4 my-6 bg-red-700 w-full rounded-lg' onClick={handleButtonClick}>
+         className='p-3 md:p-4 my-3 md:my-6 bg-red-700 w-full rounded-lg' onClick={handleButtonClick}>
            {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
-        <p className='py-4 text-start cursor-pointer' onClick={toggleSignIn}>
+        <p className='py-2 md:py-4 text-start cursor-pointer' onClick={toggleSignIn}>
           {isSignInForm ? "New to Netflix? Sign Up Now" : "Already registered? Sign In Now"}
         </p>
       </form>

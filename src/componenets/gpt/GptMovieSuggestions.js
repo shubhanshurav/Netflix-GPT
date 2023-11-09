@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import MovieList from "../componenets/MovieList";
+import MovieList from "../MovieList";
 
 const GptMovieSuggestions = () => {
 

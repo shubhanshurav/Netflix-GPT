@@ -1,7 +1,7 @@
 import React from 'react';
 import GPTSearchBar from './GPTSearchBar';
 import GptMovieSuggestion from './GptMovieSuggestions';
-import { BG_URL } from '../utils/constants';
+import { BG_URL } from '../../utils/constants';
 
 const GPTPageSearch = () => {
   return (

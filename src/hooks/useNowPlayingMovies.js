@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { API_OPTIONS } from '../utils/constants';
 import { useDispatch, useSelector } from 'react-redux';
-import { addNowPlayingMovies } from '../utils/moviesSlice';
+import { addNowPlayingMovies } from '../redux/slices/moviesSlice';
 
 const useNowPlayingMovies = () => {
     // Ftech data from TMDB API and update store

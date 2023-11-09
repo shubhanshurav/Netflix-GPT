@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import { API_OPTIONS } from '../utils/constants';
 import { useDispatch, useSelector } from 'react-redux';
-import { addPopularMovies } from '../utils/moviesSlice';
+import { addPopularMovies } from '../redux/slices/moviesSlice';
 
 const usePopularMovies = () => {
     // Ftech data from TMDB API and update store
