@@ -1,7 +1,7 @@
 import React, { useEffect}  from 'react'
 import { auth } from '../utils/firebase';
 import { signOut } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { onAuthStateChanged } from "firebase/auth";
 import {addUser, removeUser} from '../redux/slices/userSlice';
@@ -16,6 +16,11 @@ const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
+  const location = useLocation();
+
+  
+  const isLoginPage = location.pathname === "/login";
+  const isStartedPage = location.pathname === "/";
 
   const handleSignOut = () => {
     signOut(auth).then(() => {})
@@ -40,7 +45,7 @@ const Header = () => {
         } else {
           // User is signed out
           dispatch(removeUser());
-          navigate("/");
+          navigate("/login");
         }
       });
 
@@ -61,15 +66,22 @@ const Header = () => {
 
   return (
     <div className='absolute px-8 w-screen py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row items-center justify-between'>
-      <div className='text-start'>
+      <div className='flex w-full justify-between items-center text-start'>
         <img 
           src={LOGO}
           alt="Netflixlogo" 
           className='w-32 h-full md:w-44 mx-auto md:mx-0'
         />
+         {isLoginPage && (
+          <div className=''>
+            <Link to='/'>
+              <button className='bg-red-600 text-white px-2 md:px-4 py-2 text-sm md:text-lg rounded-md' type='button'>Started Page</button>
+            </Link>
+          </div>
+        )}
       </div>
       {user && 
-        <div className='flex p-4 items-center gap-3'>
+        <div className='flex p-4 items-center gap-4'>
           {/* see languagechange option when showGptSearch is true */}
           {showGptSearch && (
             <select 
