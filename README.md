@@ -1,10 +1,19 @@
 ### Netflix GPT
  
-![image](https://github.com/shubhanshurav/Netflix-GPT/assets/87806305/359b6bc4-4e4a-4213-ab22-4e53f76e409b)
+![image](https://github.com/shubhanshurav/Netflix-GPT/assets/87806305/df3b7ff5-adcc-4c46-a3c6-283f201a94f3)
 
-![image](https://github.com/shubhanshurav/Netflix-GPT/assets/87806305/0d08ef76-4b43-414e-845d-2e2bec8fb73e)
+![image](https://github.com/shubhanshurav/Netflix-GPT/assets/87806305/3d09a3e7-e078-4f0c-a17e-d3cff0f72799)
 
-![image](https://github.com/shubhanshurav/Netflix-GPT/assets/87806305/e2bc6c1d-94e0-42d3-9029-267e3bcba46c)
+![image](https://github.com/shubhanshurav/Netflix-GPT/assets/87806305/3096dadf-7802-4981-8e4b-441806212604)
+
+![image](https://github.com/shubhanshurav/Netflix-GPT/assets/87806305/240effe1-2a55-4c89-a5a9-582a0ee86047)
+
+![image](https://github.com/shubhanshurav/Netflix-GPT/assets/87806305/8861533b-b5c4-482a-ab89-75cf4cdbe32d)
+
+
+
+
+
 
 <!-- 
 - Create React App
