@@ -73,7 +73,7 @@ const Header = () => {
   };
 
   return (
-    <div className="absolute px- md:px-8 w-screen py-2 bg-gradient-to-b from-black z-10 flex items-center justify-between">
+    <div className="absolute px-4 md:px-8 w-screen py-2 bg-gradient-to-b from-black z-10 flex items-center justify-between">
       <div className="flex w-full justify-between items-center text-start">
         <img
           src={LOGO}
@@ -126,9 +126,9 @@ const Header = () => {
             </div>
             {isDropdownClicked && (
               <div className="bg-black m-auto bg-opacity-80 px-2 py-2">
-                <h1 className=" text-white text-opacity-60 font-bold p-2 mx-2 rounded-xl hover:text-red-600">
+                {/* <h1 className=" text-white text-opacity-60 font-bold p-2 mx-2 rounded-xl hover:text-red-600">
                   {user.displayName}
-                </h1>
+                </h1> */}
                 <button
                   className="font-bold p-2 mx-2 text-md text-opacity-60 text-start w-full m-auto text-white hover:text-red-600"
                   onClick={handleGptSearchClick}
@@ -137,7 +137,7 @@ const Header = () => {
                   {showGptSearch ? "Home" : "GPT Search"}
                 </button>
                 <button
-                  className='flex items-center px-2 gap-2 m-auto text-white font-bold text-md text-opacity-60 py-2 hover:text-red-600'
+                  className='flex items-center px-4 gap-2 text-start text-white font-bold text-md text-opacity-60 py-2 hover:text-red-600'
                   onClick={handleSignOut}
                  >
                     <span>Sign Out</span> <FaSignOutAlt />

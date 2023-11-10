@@ -27,12 +27,12 @@ const GPTSearchBar = () => {
   };
 
   const handleGptSearchClick = async () => {
-     console.log(searchText.current.value);
+    //  console.log(searchText.current.value);
      //make an API call to GPT AI and get Movie results
 
      const gptQuery = "Act as a Movie Recommendation system and suggest some movies for the query : " +
                        searchText.current.value + 
-                      ". only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: Gadar, Sholey, Don, Golmaa, Koi Mil Gaya";
+                      ". only give me names of 10 movies, comma seperated like the example result given ahead. Example Result: Gadar, Sholey, Don, Golmaa, Koi Mil Gaya";
      const gptResults = await openai.chat.completions.create({
       messages: [{ role: 'user', content: gptQuery }],
       model: 'gpt-3.5-turbo',
@@ -42,7 +42,7 @@ const GPTSearchBar = () => {
       // TODO: Handle error here
     }
 
-    console.log(gptResults.choices?.[0]?.message?.content);
+    // console.log(gptResults.choices?.[0]?.message?.content);
     
     //this will Contains 5 five movies result
     const gptMovies = gptResults.choices?.[0]?.message?.content.split(",");  //split() -> seperate the each movie with comma(,) -> Make the array of movies
@@ -52,7 +52,7 @@ const GPTSearchBar = () => {
 
     const tmdbResults = await Promise.all(promiseArray);
     
-    console.log(tmdbResults);
+    // console.log(tmdbResults);
 
     dispatch(
       addGptMovieResult({movieNames: gptMovies, movieResults: tmdbResults})
