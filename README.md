@@ -1,5 +1,5 @@
 ### Netflix GPT
-
+ 
 ![image](https://github.com/shubhanshurav/Netflix-GPT/assets/87806305/359b6bc4-4e4a-4213-ab22-4e53f76e409b)
 
 ![image](https://github.com/shubhanshurav/Netflix-GPT/assets/87806305/0d08ef76-4b43-414e-845d-2e2bec8fb73e)
