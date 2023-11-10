@@ -22,6 +22,7 @@ const GPTSearchBar = () => {
 
     const json = await data.json();
 
+    // console.log(json.results);
     return json.results;
   };
 
@@ -29,7 +30,7 @@ const GPTSearchBar = () => {
      console.log(searchText.current.value);
      //make an API call to GPT AI and get Movie results
 
-     const gptQuery = "Act as a Movie Recommendation system and suggest some movies for the query" +
+     const gptQuery = "Act as a Movie Recommendation system and suggest some movies for the query : " +
                        searchText.current.value + 
                       ". only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: Gadar, Sholey, Don, Golmaa, Koi Mil Gaya";
      const gptResults = await openai.chat.completions.create({
@@ -47,14 +48,15 @@ const GPTSearchBar = () => {
     const gptMovies = gptResults.choices?.[0]?.message?.content.split(",");  //split() -> seperate the each movie with comma(,) -> Make the array of movies
 
     // For each movie I will search TMDB API
-    const promiseArray = gptMovies.map((movie) => {
-      searchMovieTMDB(movie);
-    });
+    const promiseArray = gptMovies.map((movie) => searchMovieTMDB(movie));
 
     const tmdbResults = await Promise.all(promiseArray);
+    
     console.log(tmdbResults);
 
-    dispatch(addGptMovieResult({movieNames: gptMovies, movieResults: tmdbResults}));
+    dispatch(
+      addGptMovieResult({movieNames: gptMovies, movieResults: tmdbResults})
+    );
 
   };
 

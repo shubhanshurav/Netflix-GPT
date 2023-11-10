@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword , signInWithEmailAndPassword, updateProf
 import { auth } from '../utils/firebase';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../redux/slices/userSlice';
-import {BG_URL, USER_AVTAR} from '../utils/constants';
+import {BG_URL, IMAGE_URL} from '../utils/constants';
 
 const Login = () => {
 
@@ -15,17 +15,23 @@ const Login = () => {
   
   const toggleSignIn = () => {
     setIsSignInForm(!isSignInForm);
+    setErrorMessage(null);
   }
 
   const email= useRef(null);
   const password= useRef(null);
+  const name= useRef(null);
 
   const handleButtonClick = () => {
     //validate the form data
     // console.log(email.current.value);
     // console.log(password.current.value);
 
-    const message = checkValidData(email.current.value, password.current.value);  
+    const message = checkValidData(
+      email.current.value, 
+      password.current.value,
+      name?.current?.value,
+    );  
     // console.log(message);
     setErrorMessage(message);
 
@@ -34,13 +40,16 @@ const Login = () => {
     // Sign in & sign up logic
     if(!isSignInForm){
       // Sign up logic
-      createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+      createUserWithEmailAndPassword(
+        auth, 
+        email.current.value, 
+        password.current.value)
       .then((userCredential) => {
         // Signed up 
         const user = userCredential.user;
         updateProfile(user, {
-          displayName: "name.current.value", 
-          photoURL: USER_AVTAR,
+          displayName: name?.current?.value, 
+          photoURL: IMAGE_URL,
         }).then(() => {
           // Profile updated!
           const {uid,email,displayName,photoURL} = auth.currentUser;
@@ -60,22 +69,28 @@ const Login = () => {
         // console.log(user);
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        setErrorMessage(errorCode + "-" + errorMessage);
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
+        // setErrorMessage(errorCode + "-" + errorMessage);
+        setErrorMessage("Email already used");
       });
     }else{
       // Sign in logic
-      signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+      signInWithEmailAndPassword(
+        auth, 
+        email.current.value, 
+        password.current.value
+      )
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
         // console.log(user);
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        setErrorMessage(errorCode + "-" + errorMessage);
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
+        // setErrorMessage(errorCode + "-" + errorMessage);
+        setErrorMessage("Invalid User");
       });
     }
 
