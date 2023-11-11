@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { auth } from "../utils/firebase";
 import { signOut } from "firebase/auth";
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from "../redux/slices/userSlice";
 import { useDispatch } from "react-redux";
 import { LOGO, SUPPORTED_LANGUAGES } from "../utils/constants";
 import { toggleGptSearchView } from "../redux/slices/gptSlice";
-import { FaSignOutAlt } from 'react-icons/fa';
-import { GiHamburgerMenu } from 'react-icons/gi';
+import { GiHamburgerMenu } from "react-icons/gi";
+import MovieHeadings from "./MovieHeadings";
 import { changeLanguages } from "../redux/slices/configSlice";
 
 const Header = () => {
@@ -73,13 +73,9 @@ const Header = () => {
   };
 
   return (
-    <div className="absolute px-4 md:px-8 w-screen py-2 bg-gradient-to-b from-black z-10 flex items-center justify-between">
+    <div className="absolute px-3 w-screen py-2 bg-gradient-to-b from-black z-10 flex items-center justify-between">
       <div className="flex w-full justify-between items-center text-start">
-        <img
-          src={LOGO}
-          alt="Netflixlogo"
-          className="w-32 h-full md:w-44 mx-auto md:mx-0"
-        />
+        <img src={LOGO} alt="Netflixlogo" className="w-36 h-full md:w-44" />
         {isLoginPage && (
           <div className="">
             <Link to="/">
@@ -92,7 +88,24 @@ const Header = () => {
             </Link>
           </div>
         )}
-         {/* {user && <HeaderList />} */}
+
+        {user && (
+          <div className="m-auto hidden md:block">
+            <MovieHeadings />
+          </div>
+        )}
+
+        {user && !showGptSearch &&(
+          <div>
+            <button
+              className="font-semibold px-2 py-1 mx-2 text-md text-start w-fit m-auto text-white bg-black bg-opacity-50 border border-2 hover:border-white hover:bg-red-700"
+              onClick={handleGptSearchClick}
+            >
+              {/* if showGptSearch is true than than show homepage otherwise show GptSearch  */}
+              {showGptSearch ? "Home" : "GPT Search"}
+            </button>
+          </div>
+        )}
       </div>
       {user && (
         <div className="flex p-4 items-center gap-4">
@@ -109,38 +122,62 @@ const Header = () => {
               ))}
             </select>
           )}
-          
-          <div className="flex flex-col w-36 z-40">
-            <div className="flex items-center m-auto">
+
+          <div className="flex flex-col w-fit md:w-36 z-40 pr-3 m-auto relative">
+            <div className="flex items-center">
               <img
                 src={user?.photoURL}
                 alt="userImg"
-                className="w-10 h-10 mb-2 cursor-pointer rounded-md"
+                className="w-10 h-10 mb-2 cursor-pointer rounded-md "
               />
               <span
                 className="text-white cursor-pointer pl-5 text-4xl"
                 onClick={handleDropDown}
               >
-               <GiHamburgerMenu />
+                <GiHamburgerMenu />
               </span>
             </div>
             {isDropdownClicked && (
-              <div className="bg-black m-auto bg-opacity-80 px-2 py-2">
+              <div className="bg-black m-auto bg-opacity-90 px-2 py-2 absolute top-14 right-0">
                 {/* <h1 className=" text-white text-opacity-60 font-bold p-2 mx-2 rounded-xl hover:text-red-600">
                   {user.displayName}
                 </h1> */}
+
                 <button
-                  className="font-bold p-2 mx-2 text-md text-opacity-60 text-start w-full m-auto text-white hover:text-red-600"
+                  className="font-semibold p-2 mx-4 text-md text-start w-full m-auto text-white hover:text-red-600"
                   onClick={handleGptSearchClick}
                 >
                   {/* if showGptSearch is true than than show homepage otherwise show GptSearch  */}
                   {showGptSearch ? "Home" : "GPT Search"}
                 </button>
+
+                <ul className="flex flex-col text-white p-2 gap-4 mx-4 text-start w-full m-auto text-white">
+                  <Link to="/nowplayingmovies" className="hover:text-red-500">
+                    <li>Now Playing </li>
+                  </Link>
+
+                  <Link to="/popularmovies" className="hover:text-red-600">
+                    <li>Popular</li>
+                  </Link>
+
+                  <Link to="/topratedmovies" className="hover:text-red-600">
+                    <li>Top Rated</li>
+                  </Link>
+
+                  <Link to="/trendingmovies" className="hover:text-red-600">
+                    <li>Trending</li>
+                  </Link>
+
+                  <Link to="upcomingmovies" className="hover:text-red-600">
+                    <li>Upcoming</li>
+                  </Link>
+                </ul>
+
                 <button
-                  className='flex items-center px-4 gap-2 text-start text-white font-bold text-md text-opacity-60 py-2 hover:text-red-600'
+                  className="flex items-center px-2 mx-4 text-start text-white font-semibold text-md py-2 hover:text-red-600"
                   onClick={handleSignOut}
-                 >
-                    <span>Sign Out</span> <FaSignOutAlt />
+                >
+                  <span>Sign Out</span>
                 </button>
               </div>
             )}
