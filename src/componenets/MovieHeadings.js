@@ -25,7 +25,7 @@ const MovieHeadings = () => {
                 <li>Trending</li>
             </Link>
 
-            <Link to="upcomingmovies" className='border-b-2 border-red-600'>
+            <Link to="/upcomingmovies" className='border-b-2 border-red-600'>
                 <li>Upcoming</li>
             </Link>
         </ul>
