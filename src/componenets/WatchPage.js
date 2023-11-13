@@ -16,9 +16,11 @@ const WatchPage = () => {
 
   return (
         <div className="bg-black pb-5 pt-20 md:pt-24">
-            <div className="w-fit"> 
+            <div className="w-fit m-auto"> 
                 <iframe
-                    className="w-screen border shodow-lg border-gray-500 aspect-video"
+                    className="w-screen md:w-[1200px] h-fit md:h-[500px] border shodow-lg border-gray-500 aspect-video"
+                    // width="1200"
+                    // height="500"
                     src={
                         "https://www.youtube.com/embed/" +
                         trailerVideo?.key +
@@ -32,7 +34,7 @@ const WatchPage = () => {
                 >         
                 </iframe>
                 <div className=" bg-black">
-                   <h1 className=" border-b border-t text-white py-4 px-2 md:pl-10 text-md md:text-2xl font-light"> {trailerVideo.name}</h1>
+                   <h1 className=" border-b border-l border-r text-white py-4 px-2 md:pl-5 text-md md:text-2xl font-light"> {trailerVideo.name}</h1>
                 </div>
             </div>
         </div>

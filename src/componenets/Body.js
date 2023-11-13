@@ -13,6 +13,7 @@ import WatchPage from './WatchPage';
 import VideoBackground from './VideoBackground';
 import MainContainer from './MainContainer';
 import ErrorPage from './ErrorPage';
+import MoviesBtnWatchPage from './pages/MoviesBtnWatchPage';
 
 const Body = () => {
 
@@ -29,8 +30,7 @@ const Body = () => {
               { path: "watch", element: <WatchPage /> }, 
             ],
         },
-        { path: "/watch", element: <WatchPage />},
-        { path: "/backgroundtrailor", element: <VideoBackground />},
+        { path: "/watch", element: <MoviesBtnWatchPage />},
         { path: "/nowplayingmovies", element: <NowPlayingMovies  title={"Now Playing"} movies={movies.nowPlayingMovies} />},
         { path: "/popularmovies", element: <PopularMovies title={"Popular Movies"} movies={movies.popularMovies} />},
         { path: "/topratedmovies", element: <TopRatedMovies  title={"Top Rated"} movies={movies.topRatedMovies}  />},
