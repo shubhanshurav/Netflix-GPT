@@ -31,7 +31,7 @@ const WatchPage = () => {
                     allowFullScreen
                 >         
                 </iframe>
-                <div className=" bg-black h-[100vh]">
+                <div className=" bg-black h-[100vh] md:h-fit">
                    <h1 className=" border-b border-t text-white py-4 px-2 md:pl-10 text-md md:text-2xl font-light"> {trailerVideo.name}</h1>
                 </div>
             </div>

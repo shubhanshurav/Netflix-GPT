@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 import WatchPage from './WatchPage';
 import VideoBackground from './VideoBackground';
 import MainContainer from './MainContainer';
+import ErrorPage from './ErrorPage';
 
 const Body = () => {
 
@@ -35,6 +36,7 @@ const Body = () => {
         { path: "/topratedmovies", element: <TopRatedMovies  title={"Top Rated"} movies={movies.topRatedMovies}  />},
         { path: "/trendingmovies", element: <TrendingMovies title={"Trending"} movies={movies.trendingMovies} />},
         { path: "/upcomingmovies", element: <UpcomingMovies title={"Upcoming Movies"} movies={movies.upcomingMovies} />},
+        { path:"*" , element: <ErrorPage />}
     ]);
 
     return (
