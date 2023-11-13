@@ -14,13 +14,18 @@ const useTrendingMovies = () => {
    );
     
      const getTrendingMovies = async () =>{
-        const data = await fetch(
-            'https://api.themoviedb.org/3/trending/movie/day?language=en-US', API_OPTIONS
-            );
-    
-         const json = await data.json();
-        //  console.log(json.results);
-         dispatch(addTrendingMovies(json.results));
+
+         try{
+            const data = await fetch(
+                  'https://api.themoviedb.org/3/trending/movie/day?language=en-US', API_OPTIONS
+                  );
+         
+               const json = await data.json();
+            //  console.log(json.results);
+               dispatch(addTrendingMovies(json.results));
+         }catch(error){
+            console.error("There is something wrong,please try again!!")
+         }
      }
     
      useEffect(() => {

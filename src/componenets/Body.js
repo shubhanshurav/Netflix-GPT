@@ -9,6 +9,9 @@ import TopRatedMovies from './pages/TopRatedMovies';
 import TrendingMovies from './pages/TrendingMovies';
 import UpcomingMovies from './pages/UpcomingMovies';
 import { useSelector } from 'react-redux';
+import WatchPage from './WatchPage';
+import VideoBackground from './VideoBackground';
+import MainContainer from './MainContainer';
 
 const Body = () => {
 
@@ -17,7 +20,16 @@ const Body = () => {
     const appRouter = createBrowserRouter([
         {path: "/", element: <StartedPage />},
         {path: "/login", element: <Login />},
-        { path: "/browse", element: <Browse />},
+        {
+            path: "/browse",
+            element: <Browse />,
+            children: [
+              { path: "/browse", element: <MainContainer /> },
+              { path: "watch", element: <WatchPage /> }, 
+            ],
+        },
+        { path: "/watch", element: <WatchPage />},
+        { path: "/backgroundtrailor", element: <VideoBackground />},
         { path: "/nowplayingmovies", element: <NowPlayingMovies  title={"Now Playing"} movies={movies.nowPlayingMovies} />},
         { path: "/popularmovies", element: <PopularMovies title={"Popular Movies"} movies={movies.popularMovies} />},
         { path: "/topratedmovies", element: <TopRatedMovies  title={"Top Rated"} movies={movies.topRatedMovies}  />},

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const ErrorPage = () => {
   return (
@@ -6,4 +6,4 @@ const ErrorPage = () => {
   )
 }
 
-export default ErrorPage
+export default ErrorPage;

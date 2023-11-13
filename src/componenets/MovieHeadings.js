@@ -1,10 +1,14 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const MovieHeadings = () => {
   return (
     <div>
-        <ul className='flex flex-row gap-6 text-white text-lg font-light'>
+        <ul className='flex flex-row gap-6 text-white items-center text-lg font-light'>
+            <Link to="/browse" className='border-b-2 border-red-600'>
+                <li>Home</li>
+            </Link>
+
             <Link to="/nowplayingmovies" className='border-b-2 border-red-600'>
                 <li>Now Playing </li>
             </Link>
@@ -29,4 +33,4 @@ const MovieHeadings = () => {
   )
 }
 
-export default MovieHeadings
+export default MovieHeadings;

@@ -21,7 +21,9 @@ const TrendingMovies = ({title, movies}) => {
           <div className='flex'>
               <div className='grid grid-cols-2 md:grid-cols-5 bg-black bg-opacity-50 px-5 py-10 m-auto gap-4 justify-around md:gap-10 w-full'>
                 {movies && movies?.map((movie) => (
-                      <MovieCard key={movie?.id} posterPath={movie?.poster_path} />
+                     <Link key={movie.id} to={"/watch?v=" + movie.id} >
+                     <MovieCard key={movie?.id} posterPath={movie?.poster_path} />
+                   </Link>
                   ))}
               </div>
           </div>

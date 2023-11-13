@@ -1,43 +1,43 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { API_OPTIONS } from '../utils/constants';
 import { addTrailerVideo } from '../redux/slices/moviesSlice';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const useMovieTrailer = (movieId) => {
-
     const dispatch = useDispatch();
 
-    //agar store me already movie hai to ham again api cal nhi krenge -> known as Memoization
-    const trailerVideo = useSelector(
-        (store) => store.movies?.trailerVideo
-    );
-
-    //fetch trailer video & updating the store with trailer video data
-    const getMovieTrailer= async () => {
-        const data = await fetch(
-            "https://api.themoviedb.org/3/movie/" + movieId + "/videos?language=en-US",
-            API_OPTIONS
-            );
-
-        const json = await data.json();
-        // const trailer = json.results.filter((video) => video.name === "Final Trailer");
-
-        /** 
-         * suppose agar kisi video me trailer nhi hai to ham kisi or video ko 
-         * consider krke background me show kra denge 
-         * isi case ko handle krne ke liye hamne filterData.length ka use kiye 
-         * agar length 0 hai to json.results me se 1st video ko show kra denge otherwise trailer video ko
-        */
-        const filterData = json.results.filter((video) => video.type === "Trailer");
-        const trailer = filterData.length ? filterData[0] : json.results[0];
-        // console.log(trailer);
-        dispatch(addTrailerVideo(trailer));
-    }
+    // Use a local state to store the trailer video
+    const [trailerVideo, setTrailerVideo] = useState(null);
 
     useEffect(() => {
-       // reduce the api call
-       !trailerVideo && getMovieTrailer();
-    },[]);
+        const getMovieTrailer = async () => {
+
+            try{
+                const data = await fetch(
+                    "https://api.themoviedb.org/3/movie/" + movieId + "/videos?language=en-US",
+                    API_OPTIONS
+                );
+    
+                const json = await data.json();
+    
+                // Handle the case where there is no trailer
+                const filterData = json.results.filter((video) => video.type === "Trailer");
+                const trailer = filterData.length ? filterData[0] : null;
+    
+                // Update the local state and dispatch to Redux
+                setTrailerVideo(trailer);
+                console.log(trailer);
+                dispatch(addTrailerVideo(trailer));
+            }catch(error){
+                console.error("There is something wrong,please try again!!")
+            }
+        };
+
+        // Fetch the trailer initially when the component mounts
+        getMovieTrailer();
+    }, [dispatch, movieId]);
+
+    return trailerVideo;
 };
 
 export default useMovieTrailer;

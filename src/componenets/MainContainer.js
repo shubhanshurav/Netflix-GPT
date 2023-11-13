@@ -2,8 +2,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import VideoBackground from './VideoBackground';
 import VideoTitle from './VideoTitle';
+// import PlayVideo from './PlayVideo';
 
-const MainContainer = () => {
+const MainContainer = () => { 
 
     const movies = useSelector((store) => store.movies?.trendingMovies);
 
@@ -11,15 +12,21 @@ const MainContainer = () => {
     // if(movies == null) return;
     if(!movies) return;
 
-    const movieTrailer = movies[0];
-    // console.log(movieTrailer);
+    const movieTrailerId = movies[0];
+    const {original_title,overview, id} = movieTrailerId;
 
-    const {original_title, overview, id} = movieTrailer;
+    // const movieTrailerId = movies.map(video => video.id);
+    // console.log(movieTrailerId); 
+
 
   return (
-    <div className="pt-[30%] md:pt-0 bg-black">
-        <VideoTitle title={original_title} overview={overview}  />
+    <div className="pt-[12%] md:pt-0 bg-black">
+        <VideoTitle title={original_title} overview={overview} movieId={id} />
         <VideoBackground movieId={id} />
+        {/* {movieTrailerId.map((e,index) => (
+          <PlayVideo movieId={e} />
+        ))} */}
+
     </div>
   )
 }

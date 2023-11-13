@@ -1,7 +1,7 @@
 import React from 'react';
 import { IMD_CDN_URL } from '../utils/constants';
 
-const MovieCard = ({ posterPath }) => {
+const MovieCard = ({ posterPath}) => {
 
  if (!posterPath) return null;
 
