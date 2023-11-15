@@ -2,7 +2,7 @@
 
 #### In the Desktop/Laptop:
 <div style="display: flex; flex-wrap: wrap;">
-  <img src="https://github.com/shubhanshurav/Netflix-GPT/assets/87806305/df3b7ff5-adcc-4c46-a3c6-283f201a94f3" style="width: 322%;" alt="Image 1">
+  <img src="https://github.com/shubhanshurav/Netflix-GPT/assets/87806305/df3b7ff5-adcc-4c46-a3c6-283f201a94f3" style="width: 32%;" alt="Image 1">
   <img src="https://github.com/shubhanshurav/Netflix-GPT/assets/87806305/3d09a3e7-e078-4f0c-a17e-d3cff0f72799" style="width: 32%;" alt="Image 2">
   <img src="https://github.com/shubhanshurav/Netflix-GPT/assets/87806305/335912d5-e704-4807-ab7e-23dbfd7957ed" style="width: 32%;" alt="Image 3">
   <img src="https://github.com/shubhanshurav/Netflix-GPT/assets/87806305/240effe1-2a55-4c89-a5a9-582a0ee86047" style="width: 32%;" alt="Image 4">
