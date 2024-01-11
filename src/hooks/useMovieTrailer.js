@@ -26,7 +26,7 @@ const useMovieTrailer = (movieId) => {
     
                 // Update the local state and dispatch to Redux
                 setTrailerVideo(trailer);
-                console.log(trailer);
+                // console.log(trailer);
                 dispatch(addTrailerVideo(trailer));
             }catch(error){
                 console.error("There is something wrong,please try again!!")

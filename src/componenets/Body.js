@@ -10,7 +10,6 @@ import TrendingMovies from './pages/TrendingMovies';
 import UpcomingMovies from './pages/UpcomingMovies';
 import { useSelector } from 'react-redux';
 import WatchPage from './WatchPage';
-import VideoBackground from './VideoBackground';
 import MainContainer from './MainContainer';
 import ErrorPage from './ErrorPage';
 import MoviesBtnWatchPage from './pages/MoviesBtnWatchPage';

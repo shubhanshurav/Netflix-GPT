@@ -32,7 +32,7 @@ const GPTSearchBar = () => {
 
      const gptQuery = "Act as a Movie Recommendation system and suggest some movies for the query : " +
                        searchText.current.value + 
-                      ". only give me names of 10 movies, comma seperated like the example result given ahead. Example Result: Gadar, Sholey, Don, Golmaa, Koi Mil Gaya";
+                      ". only give me names of 10 movies, comma seperated like the example result given ahead. Example Result: Gadar, Sholey, Pathan, Golmaal, Koi Mil Gaya";
      const gptResults = await openai.chat.completions.create({
       messages: [{ role: 'user', content: gptQuery }],
       model: 'gpt-3.5-turbo',
@@ -55,7 +55,10 @@ const GPTSearchBar = () => {
     // console.log(tmdbResults);
 
     dispatch(
-      addGptMovieResult({movieNames: gptMovies, movieResults: tmdbResults})
+      addGptMovieResult({
+        movieNames: gptMovies, 
+        movieResults: tmdbResults
+      })
     );
 
   };
@@ -70,7 +73,7 @@ const GPTSearchBar = () => {
               ref={searchText}
               type='text' 
               className='col-span-9 p-2 m-4' 
-              placeholder={lang[langKey] .gptSearchPlaceholder}
+              placeholder={lang[langKey].gptSearchPlaceholder}
             />
             <button 
              className='col-span-3 py-2 m-4 px-4 bg-red-700 text-white rounded-lg'

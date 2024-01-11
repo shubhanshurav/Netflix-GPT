@@ -27,6 +27,7 @@ const Header = () => {
     signOut(auth)
       .then(() => {
         // user is signout successfully
+        navigate("/login");
       })
       .catch((error) => {
         navigate("/error");
@@ -100,7 +101,7 @@ const Header = () => {
         {user && !showGptSearch &&(
           <div className="m-auto">
             <button
-              className="font-semibold px-2 items-center py-1 mx-2 text-md text-start w-fit m-auto text-white bg-black bg-opacity-50 border border-2 hover:border-white hover:bg-red-700"
+              className="font-semibold px-2 items-center py-1 mx-2 text-md text-start w-fit m-auto text-white bg-black bg-opacity-50 border-2 hover:border-white hover:bg-red-700"
               onClick={handleGptSearchClick}
             >
               {/* if showGptSearch is true than than show homepage otherwise show GptSearch  */}
@@ -153,7 +154,7 @@ const Header = () => {
                   {showGptSearch ? "Home" : "GPT Search"}
                 </button>
 
-                <ul className="flex flex-col text-black font-semibold p-2 gap-4 mx-4 text-start w-full m-auto text-white">
+                <ul className="flex flex-col font-semibold p-2 gap-4 mx-4 text-start w-full m-auto text-white">
                   <Link to="/nowplayingmovies" className="hover:text-gray-300">
                     <li>Now Playing </li>
                   </Link>
