@@ -140,7 +140,7 @@ const Header = () => {
               </span>
             </div>
             {isDropdownClicked && (
-              <div className="bg-red-600 m-auto bg-opacity-70 rounded-b-xl px-2 py-2 absolute top-14 right-0">
+              <div className="bg-rose-700 m-auto bg-opacity-90 rounded-b-xl px-2 py-2 absolute top-14 right-0">
                 {/* <h1 className=" text-white text-opacity-60 font-bold p-2 mx-2 rounded-xl hover:text-red-600">
                   {user.displayName}
                 </h1> */}
