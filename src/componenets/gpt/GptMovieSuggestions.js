@@ -15,10 +15,10 @@ const GptMovieSuggestions = () => {
        <div>
           {/* <img src={IMD_CDN_URL + movieResults[0][0].poster_path} alt='movie' /> */}
           {movieNames.map((movieName, index) => (
-            <MovieList 
-              key={movieName} 
-              title={movieName} 
-              movies={movieResults[index]} 
+            <MovieList
+              key={movieName}
+              title={movieName}
+              movies={movieResults[index]}
             />
           ))}
        </div>

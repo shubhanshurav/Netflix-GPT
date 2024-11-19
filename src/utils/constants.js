@@ -9,7 +9,7 @@ export const IMAGE_URL =
       accept: 'application/json',
       Authorization: 'Bearer ' + process.env.REACT_APP_TMDB_KEY,
     }
-  }; 
+  };
 
   export const IMD_CDN_URL = "https://image.tmdb.org/t/p/w300";
 
@@ -21,4 +21,5 @@ export const IMAGE_URL =
        {identifier: "spanish", name: "Spanish"},
   ];
 
-export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;
+// export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;
+export const GEMINI_KEY = process.env.REACT_APP_GEMINI_KEY;
