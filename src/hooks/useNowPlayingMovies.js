@@ -18,12 +18,11 @@ const useNowPlayingMovies = () => {
             const data = await fetch(
             'https://api.themoviedb.org/3/movie/now_playing?US&page=2', API_OPTIONS
             );
-        
+            // console.log(data);
             const json = await data.json();
-            //  console.log(json.results);
             dispatch(addNowPlayingMovies(json.results));
         }catch(error){
-            console.error("There is something wrong,please try again!!")
+            console.error("There is something wrong,please try again!!", error)
         }
      }
     

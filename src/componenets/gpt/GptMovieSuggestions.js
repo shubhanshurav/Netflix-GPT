@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import MovieList from "../MovieList";
-// import { IMD_CDN_URL } from '../../utils/constants';
+import MovieList from "../movie/MovieList";
 
 const GptMovieSuggestions = () => {
 
@@ -13,7 +12,6 @@ const GptMovieSuggestions = () => {
   return (
     <div className='p-4 m-4 bg-black text-white bg-opacity-90'>
        <div>
-          {/* <img src={IMD_CDN_URL + movieResults[0][0].poster_path} alt='movie' /> */}
           {movieNames.map((movieName, index) => (
             <MovieList
               key={movieName}

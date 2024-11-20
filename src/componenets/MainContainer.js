@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import VideoBackground from './VideoBackground';
-import VideoTitle from './VideoTitle';
+import VideoBackground from './pages/VideoBackground';
+import VideoTitle from './pages/VideoTitle';
 // import PlayVideo from './PlayVideo';
 
 const MainContainer = () => { 
@@ -12,7 +12,7 @@ const MainContainer = () => {
     // if(movies == null) return;
     if(!movies) return;
 
-    const movieTrailerId = movies[0];
+    const movieTrailerId = movies[1];
     const {original_title,overview, id} = movieTrailerId;
 
     // const movieTrailerId = movies.map(video => video.id);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BG_URL } from '../utils/constants';
+import { BG_URL } from '../../utils/constants';
 import {Link} from 'react-router-dom';
 
 const StartedPage = () => {

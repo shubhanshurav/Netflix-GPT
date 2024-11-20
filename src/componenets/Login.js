@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import Header from './Header';
+import Header from './pages/Header';
 import { checkValidData } from '../utils/validate';
 import { createUserWithEmailAndPassword , signInWithEmailAndPassword, updateProfile} from "firebase/auth";
 import { auth } from '../utils/firebase';
@@ -84,7 +84,7 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        // console.log(user);
+        console.log(user);
       })
       .catch((error) => {
         // const errorCode = error.code;

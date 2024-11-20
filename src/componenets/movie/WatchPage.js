@@ -1,6 +1,6 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
-import useMovieTrailer from "../hooks/useMovieTrailer";
+import useMovieTrailer from "../../hooks/useMovieTrailer";
 import { useSelector } from "react-redux";
 
 const WatchPage = () => {
@@ -32,7 +32,7 @@ const WatchPage = () => {
                 >
                 </iframe>
                 <div className="bg-black">
-                   <h1 className=" border-b border-l border-r text-white py-4 px-2 md:pl-5 text-md md:text-2xl font-light"> {trailerVideo.name}</h1>
+                   <h1 className=" border-b border-l border-r text-white py-4 px-2 md:pl-5 text-md md:text-2xl font-light"> {trailerVideo?.name}</h1>
                 </div>
             </div>
         </div>
